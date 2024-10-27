@@ -1,7 +1,6 @@
 from flask import Flask, render_template, jsonify, request
-import pymysql
+from flask_mysqldb import MySQL 
 import yaml
-
 try:
     with open('database.yaml', 'r') as file:
         db = yaml.load(file, Loader=yaml.FullLoader)
@@ -12,16 +11,14 @@ except yaml.YAMLError as e:
     print(f"Error loading YAML file: {e}")
     db = None
 app = Flask(__name__)
-
 if db:
     app.config['MYSQL_HOST'] = db['mysql_host']
     app.config['MYSQL_USER'] = db['mysql_user']
     app.config['MYSQL_PASSWORD'] = db['mysql_password']
     app.config['MYSQL_DB'] = db['mysql_db']
+    mysql = MySQL(app)
 else:
     raise ValueError("Database configuration is missing or invalid.")
-
-# Route to test database connection
 @app.route('/test_connection')
 def test_connection():
     try:
@@ -33,7 +30,6 @@ def test_connection():
     except Exception as e:
         return jsonify({"error": str(e)})
 
-# Job listings
 JOBS = [
     {
         'id': 1,
@@ -51,6 +47,7 @@ JOBS = [
         'salary': "Rs. 11,000/m",
     }
 ]
+
 @app.route('/')
 def hello_world(): 
     return render_template('index.html', jobs=JOBS)
