@@ -1,33 +1,66 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <title>Flask Project</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <style>
-      #banner{
-        height: 360px;
-        width:100%;
-        object-fit:cover;}
+        #banner {
+            height: 360px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .lead {
+            text-align: justify;
+        }
+        .custom-image {
+            height: 320px;
+            object-fit: cover; 
+            width: 100%;
+        }
     </style>
-  </head>
-  <body>
-    <div class="Container">
-    <h1 class="text-center mt-2 mb-4">Amejan Creations</h1>
-    <img class="img-fluid" id="banner" src="static/logo.png">
-    <h2 class="text-center mt-2 mb-4">About Us</h2>
-    <p class="lead">Amejan Creations is a company that specializes in providing high-quality products and services to the customer. We are committed to providing our customers with exceptional customer service and a wide range of products and services.</p>
-    <h2 class="text-center mt-2 mb-4">Job Openings</h2>
-      <div>
-         {% for job in jobs %}
-          {% include 'jobitem.html' %}
-         {% endfor %}
-      </div>
-    <div style="text-align:center;">  
-    <button  type="button" class="btn btn-primary btn-lg">Contact Us</button></div>
-  </body></div>
-  <footer class="text-center mt-2 mb-4">
-    @Copyright 2024, Amejan Creations
-  </footer>
+</head>
+<body style="background-color: lightcyan" id="home">
+    {% include 'nav.html' %}
+
+    <img class="img-fluid" id="banner" src="static/logo.png" alt="Banner">
+
+    <div class="container">
+        <h2 class="text-center mt-4 mb-4">About Us</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="lead">Amejan Creations is a leading company dedicated to delivering high-quality products and services tailored to meet the diverse needs of our customers. With a strong commitment to excellence, we strive to ensure that every product we offer reflects our unwavering standards of quality and craftsmanship.
+
+                At Amejan Creations, we understand that our customers are the heart of our business. We are passionate about providing exceptional customer service, which means being attentive, responsive, and dedicated to enhancing your experience. Our team is trained to listen to your needs and offer personalized solutions that cater to your specific requirements.
+
+                Our extensive product range includes innovative and stylish offerings designed to enrich your life. Whether you're looking for functional everyday items, unique gifts, or luxury goods, we have something for everyone. We carefully curate our selection to ensure that each product is not only aesthetically pleasing but also practical and durable.
+
+                In addition to our product offerings, we also provide a variety of services aimed at helping our customers maximize the value they receive from their purchases. From expert consultations to customized solutions, our knowledgeable staff is here to assist you every step of the way. We believe that a great product deserves exceptional support, and we are here to ensure your satisfaction.
+
+                Moreover, our commitment to sustainability and ethical practices is at the forefront of our operations. We prioritize sourcing materials responsibly and aim to minimize our environmental impact. By choosing Amejan Creations, you are not only investing in quality but also supporting a company that values integrity and social responsibility.
+We are excited to be part of your journey and look forward to serving you with the highest level of commitment and care.</p>
+            </div>
+            <div class="d-none d-md-block col-md-6">
+                <img src="static/office image 1.jpeg" style="width: 100%; height: 350px; object-fit: cover;" alt="Office Image 1">
+                <img src="static/office image 2.jpeg" style="width: 100%; height: 350px; object-fit: cover;" alt="Office Image 2">
+            </div>
+        </div>
+
+        <h2 class="text-center mt-4 mb-4">Job Openings</h2>
+        <div>
+            {% for job in jobs %}
+                {% include 'jobitem.html' %}
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-4">  
+            <a class="btn btn-primary btn-lg" href="mailto:tacetgaming2703@gmail.com?subject=Query%20&body=%5BType%20the%20query%5D">Contact Us</a>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-Ou7tIURM9cRr9FgptXtpI1iPpJWe4B6rR4i6lNhFi5X1yF2XqKh8sC4h8Hi/0jKb" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-2C2NYWPKWQJdXo/lmNlK2AeHCT93cF4qIzI3X9ozR8nFGMWGLGkW9/+Q/aL1O2LXa" crossorigin="anonymous"></script>
+</body>
 </html>
